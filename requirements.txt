@@ -4,3 +4,4 @@ librosa
 soundfile
 tensorflow
 sounddevice
+influxdb_client

@@ -60,4 +60,9 @@ point = Point("audio_classification") \
     .time(datetime.datetime.utcnow())
 
 write_api.write(bucket=INFLUX_BUCKET, org=INFLUX_ORG, record=point)
+client.close()
 print("✅ Risultato salvato su InfluxDB.")
+
+write_api.write(bucket=INFLUX_BUCKET, org=INFLUX_ORG, record=point)
+print("Punto scritto:", point.to_line_protocol())
+
