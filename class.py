@@ -1,7 +1,16 @@
+import sys
 import librosa
 import numpy as np
 from tensorflow.keras.models import load_model
 
+# Verifica che sia stato passato un file
+if len(sys.argv) < 2:
+    print("❌ Errore: specifica il percorso del file audio da classificare.")
+    sys.exit(1)
+
+audio_path = sys.argv[1]
+
+# Carica il modello
 model = load_model("modello.h5")
 
 def estrai_mfcc(path_audio):
@@ -19,9 +28,12 @@ def estrai_mfcc(path_audio):
     mfcc = mfcc.reshape((40, 174, 1))  # formato immagine CNN
     return np.expand_dims(mfcc, axis=0)  # shape: (1, 40, 174, 1)
 
-X = estrai_mfcc("test.wav")
+# Estrai caratteristiche
+X = estrai_mfcc(audio_path)
 
 print("Forma input:", X.shape)
+
+# Predizione
 pred = model.predict(X)
 classe = np.argmax(pred)
-print("Classe predetta:", classe)
+print("🎯 Classe predetta:", classe)

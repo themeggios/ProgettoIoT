@@ -10,7 +10,7 @@ CHANNELS = 1  # mono
 DEVICE_ID = 2  # microfono della webcam
 
 # === Nome file con timestamp ===
-filename = f"recording_{int(time.time())}.wav"
+filename = f"recording.wav"
 
 print("Inizio registrazione...")
 recording = sd.rec(int(DURATION * SAMPLERATE), 
