@@ -1,0 +1,8 @@
+numpy
+scipy
+librosa
+soundfile
+tensorflow
+sounddevice
+influxdb_client
+paho-mqtt
